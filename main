@@ -214,8 +214,7 @@ local function onChildAdded(Object)
       
     if Song then
         PoisonNotes =
-            (Song.Parent:FindFirstChild"MultiplieGimmickNotes" or Song:FindFirstChild"GimmickNotes" or
-            Song.Parent:FindFirstChild"GimmickNotes" or
+            (Song.Parent:FindFirstChild"MultiplieGimmickNotes" or
             Song:FindFirstChild"MineNotes" or {} ).Value == "OnHit";
         print(tostring(Song))
     end;
@@ -242,8 +241,7 @@ local function onChildAdded(Object)
     end;
     for _, Holder in pairs(IncomingNotes) do
         connections:add(Holder.ChildAdded, function(Arrow)
-            if IsOnHit(Arrow:FindFirstChildOfClass"ModuleScript") or (not Arrow.Visible) then return; end;
-            -- if (Arrow.HellNote.Value) and (PoisonNotes)
+            if (Arrow.HellNote.Value) and (PoisonNotes) or IsOnHit(Arrow:FindFirstChildOfClass"ModuleScript") or (not Arrow.Visible) then return; end;
             local Input = Session[Holder.Name];
           
             wait(Offset + Library.Flags["ms"].Value / 1000);
